@@ -3,146 +3,360 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Təhsil Kalkulyatoru</title>
+    <meta
+      name="description"
+      content="Müəllimlər üçün ağıllı imtahan və qiymətləndirmə sistemi"
+    />
+    <title>Təhsil Kalkulyatoru - Müəllimlər üçün Ağıllı Sistem</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <style>
+      /* Custom Swiper Styles */
+      .mobile-swiper {
+        padding-bottom: 40px;
+      }
+
+      .mobile-swiper .swiper-pagination {
+        bottom: 0;
+      }
+
+      .mobile-swiper .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        background: #737373;
+        opacity: 0.5;
+        transition: all 0.3s ease;
+      }
+
+      .mobile-swiper .swiper-pagination-bullet-active {
+        background: #171717;
+        opacity: 1;
+        width: 24px;
+        border-radius: 4px;
+      }
+
+      /* Smooth transitions */
+      * {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      /* Prevent horizontal scroll */
+      html,
+      body {
+        overflow-x: hidden;
+        max-width: 100vw;
+      }
+
+      body {
+        position: relative;
+      }
+
+      /* Screenshot hover effect */
+      .screenshot-card {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .screenshot-card:hover {
+        transform: scale(1.03);
+      }
+
+      /* Button press effect */
+      .store-button:active {
+        transform: scale(0.98);
+      }
+
+      /* Swiper container fix */
+      .swiper {
+        overflow: visible;
+      }
+
+      .swiper-wrapper {
+        overflow: visible;
+      }
+    </style>
   </head>
 
-  <body class="bg-white text-neutral-900 overflow-x-hidden">
+  <body class="bg-white text-neutral-900 antialiased">
+    <!-- Main Section -->
     <section
-      class="min-h-screen flex items-center justify-center px-4 py-10 sm:px-6 sm:py-14 lg:py-20"
+      class="min-h-screen flex items-center justify-center px-4 py-12 sm:px-6 sm:py-16 lg:py-20"
     >
-      <div
-        class="max-w-7xl w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"
-      >
-        <!-- LEFT CONTENT -->
-        <div class="space-y-7 sm:space-y-8 text-center lg:text-left">
-          <!-- Logo -->
-          <div class="flex items-center justify-center lg:justify-start gap-4">
-            <div
-              class="w-14 h-14 rounded-2xl flex items-center justify-center text-lg font-semibold shadow-md p-3"
-            >
-              <img src="./images/logo.png" alt="Təhsil Kalkulyatoru loqosu" />
+      <div class="max-w-7xl w-full">
+        <div
+          class="grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center"
+        >
+          <!-- LEFT CONTENT -->
+          <div class="space-y-6 sm:space-y-8 text-center lg:text-left order-1">
+            <!-- Logo & Brand -->
+            <div class="inline-flex items-center gap-3 sm:gap-4">
+              <div
+                class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl shadow-lg flex items-center justify-center overflow-hidden bg-white"
+              >
+                <img
+                  src="./images/logo.png"
+                  alt="Təhsil Kalkulyatoru loqosu"
+                  class="w-full h-full object-contain p-2"
+                />
+              </div>
+              <span
+                class="text-lg sm:text-xl font-semibold tracking-tight text-neutral-900"
+              >
+                Təhsil Kalkulyatoru
+              </span>
             </div>
-            <span class="text-xl font-semibold tracking-wide">
-              Təhsil Kalkulyatoru
-            </span>
+
+            <!-- Main Headline -->
+            <div class="space-y-3 sm:space-y-4">
+              <h1
+                class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight"
+              >
+                Müəllimlər üçün
+              </h1>
+              <p
+                class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-neutral-500"
+              >
+                Ağıllı İmtahan və Qiymətləndirmə Sistemi
+              </p>
+            </div>
+
+            <!-- Description -->
+            <p
+              class="text-base sm:text-lg text-neutral-600 leading-relaxed max-w-2xl mx-auto lg:mx-0"
+            >
+              Hesablamaları avtomatlaşdırın, imtahanları asanlıqla yaradın və
+              nəticələri real vaxtda izləyin. Təhsil prosesini sürətləndirmək
+              üçün hazırlanmış minimalist və güclü mobil tətbiq.
+            </p>
+
+            <!-- Download Buttons -->
+            <div class="pt-2 sm:pt-4">
+              <div
+                class="grid sm:grid-cols-2 gap-3 sm:gap-4 max-w-xl mx-auto lg:mx-0"
+              >
+                <!-- App Store Button -->
+                <a
+                  href="https://install.edumiro.com?app=tehsil-kalkulyatoru"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="App Store-dan yüklə"
+                  class="store-button group flex items-center gap-3 sm:gap-4 rounded-2xl border border-neutral-800 bg-black px-4 sm:px-5 py-3 sm:py-3.5 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-neutral-900"
+                >
+                  <div
+                    class="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-white/10 p-2"
+                  >
+                    <img
+                      src="./images/apple.png"
+                      alt="Apple logo"
+                      class="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div class="text-left">
+                    <div
+                      class="text-[10px] sm:text-[11px] uppercase tracking-wide text-neutral-300"
+                    >
+                      Download on the
+                    </div>
+                    <div
+                      class="text-base sm:text-lg font-semibold leading-tight"
+                    >
+                      App Store
+                    </div>
+                  </div>
+                </a>
+
+                <!-- Google Play Button -->
+                <a
+                  href="https://install.edumiro.com?app=tehsil-kalkulyatoru"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Google Play-dən yüklə"
+                  class="store-button group flex items-center gap-3 sm:gap-4 rounded-2xl border border-neutral-300 bg-white px-4 sm:px-5 py-3 sm:py-3.5 text-neutral-900 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-neutral-400 hover:bg-neutral-50"
+                >
+                  <div
+                    class="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-neutral-100 p-2"
+                  >
+                    <img
+                      src="./images/google-play.png"
+                      alt="Google Play logo"
+                      class="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div class="text-left">
+                    <div
+                      class="text-[10px] sm:text-[11px] tracking-wide text-neutral-500"
+                    >
+                      GET IT ON
+                    </div>
+                    <div
+                      class="text-base sm:text-lg font-semibold leading-tight"
+                    >
+                      Google Play
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
           </div>
 
-          <!-- Title -->
-          <h1
-            class="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold leading-tight tracking-tight"
-          >
-            Müəllimlər üçün<br />
-            <span class="text-neutral-500"
-              >Ağıllı İmtahan və Qiymətləndirmə Sistemi</span
-            >
-          </h1>
-
-          <!-- Description -->
-          <p
-            class="text-base sm:text-lg text-neutral-600 leading-relaxed max-w-xl mx-auto lg:mx-0"
-          >
-            Hesablamaları avtomatlaşdırın, imtahanları asanlıqla yaradın və
-            nəticələri real vaxtda izləyin. Təhsil prosesini sürətləndirmək üçün
-            hazırlanmış minimalist və güclü mobil tətbiq.
-          </p>
-
-          <!-- Store Buttons -->
-          <div
-            class="grid sm:grid-cols-2 gap-3 sm:gap-4 pt-2 max-w-xl mx-auto lg:mx-0"
-          >
-            <a
-              href="https://install.edumiro.com?app=tehsil-kalkulyatoru"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="App Store-dan yüklə"
-              class="group flex items-center gap-3 rounded-2xl border border-neutral-800 bg-black px-4 py-2 text-white shadow-md transition hover:scale-[1.02] hover:bg-neutral-900"
-            >
-              <span
-                class="flex h-10 w-10 items-center p-2 justify-center rounded-xl bg-white/10"
-              >
-                <img src="./images/apple.png" alt="" />
-              </span>
-              <span class="text-left">
-                <span class="block text-[11px] uppercase text-neutral-300"
-                  >Download on the</span
-                >
-                <span class="block text-lg font-semibold leading-none"
-                  >App Store</span
-                >
-              </span>
-            </a>
-            <a
-              href="https://install.edumiro.com?app=tehsil-kalkulyatoru"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Google Play-dən yüklə"
-              class="group flex items-center gap-3 rounded-2xl border border-neutral-300 bg-white px-4 py-2 text-neutral-900 shadow-md transition hover:scale-[1.02] hover:border-neutral-400"
-            >
-              <span
-                class="flex h-10 w-10 items-center p-2 justify-center rounded-xl bg-white/10"
-              >
-                <img src="./images/google-play.png" alt="" />
-              </span>
-              <span class="text-left">
-                <span class="block text-[11px] text-neutral-500"
-                  >GET IN ON</span
-                >
-                <span class="block text-lg font-semibold leading-none"
-                  >Google Play</span
-                >
-              </span>
-            </a>
-          </div>
-        </div>
-
-        <!-- RIGHT SIDE – SCREENSHOTS -->
-        <div class="relative flex justify-center items-center">
-          <!-- Background subtle glow -->
-          <div
-            class="absolute w-72 h-72 sm:w-96 sm:h-96 bg-neutral-200 rounded-full blur-3xl opacity-40"
-          ></div>
-
-          <!-- Screenshot Container -->
-          <div class="relative grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-            <!-- Screenshot 1 -->
+          <!-- RIGHT SIDE - SCREENSHOTS -->
+          <div class="relative flex justify-center items-center order-2">
+            <!-- Background Glow Effect -->
             <div
-              class="w-full max-w-[165px] sm:max-w-[185px] md:max-w-[195px] aspect-[9/19] bg-neutral-100 rounded-3xl overflow-hidden shadow-xl border border-neutral-200 flex items-center justify-center text-neutral-400 text-sm hover:scale-[1.03] duration-300 justify-self-center"
+              class="absolute inset-0 flex items-center justify-center pointer-events-none"
             >
-              <img
-                src="./images/5.jpg"
-                alt="Tətbiq ekran görüntüsü 1"
-                class="w-full h-full object-cover"
-                loading="lazy"
-              />
+              <div
+                class="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-gradient-to-br from-neutral-200 to-neutral-300 rounded-full blur-3xl opacity-30"
+              ></div>
             </div>
 
-            <!-- Screenshot 2 -->
-            <div
-              class="w-full max-w-[210px] sm:max-w-[230px] md:max-w-[195px] aspect-[9/19] bg-neutral-100 rounded-3xl overflow-hidden shadow-2xl border border-neutral-300 flex items-center justify-center text-neutral-400 text-sm hover:scale-[1.03] duration-300 justify-self-center col-span-2 md:col-span-1"
-            >
-              <img
-                src="./images/2.jpg"
-                alt="Tətbiq ekran görüntüsü 2"
-                class="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
+            <!-- Screenshot Container -->
+            <div class="relative w-full max-w-md lg:max-w-lg">
+              <!-- Mobile Slider (< md) -->
+              <div
+                class="swiper mobile-swiper md:hidden w-full max-w-[320px] mx-auto"
+              >
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="w-full px-2">
+                      <div
+                        class="aspect-[9/19] bg-neutral-100 rounded-[28px] sm:rounded-[32px] overflow-hidden shadow-2xl border border-neutral-200"
+                      >
+                        <img
+                          src="./images/5.jpg"
+                          alt="Tətbiq ekran görüntüsü 1"
+                          class="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                  </div>
 
-            <!-- Screenshot 3 -->
-            <div
-              class="w-full max-w-[165px] sm:max-w-[185px] md:max-w-[195px] aspect-[9/19] bg-neutral-100 rounded-3xl overflow-hidden shadow-xl border border-neutral-200 flex items-center justify-center text-neutral-400 text-sm hover:scale-[1.03] duration-300 justify-self-center"
-            >
-              <img
-                src="./images/3.jpg"
-                alt="Tətbiq ekran görüntüsü 3"
-                class="w-full h-full object-cover"
-                loading="lazy"
-              />
+                  <div class="swiper-slide">
+                    <div class="w-full px-2">
+                      <div
+                        class="aspect-[9/19] bg-neutral-100 rounded-[28px] sm:rounded-[32px] overflow-hidden shadow-2xl border border-neutral-300"
+                      >
+                        <img
+                          src="./images/2.jpg"
+                          alt="Tətbiq ekran görüntüsü 2"
+                          class="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="swiper-slide">
+                    <div class="w-full px-2">
+                      <div
+                        class="aspect-[9/19] bg-neutral-100 rounded-[28px] sm:rounded-[32px] overflow-hidden shadow-2xl border border-neutral-200"
+                      >
+                        <img
+                          src="./images/3.jpg"
+                          alt="Tətbiq ekran görüntüsü 3"
+                          class="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+              </div>
+
+              <!-- Desktop Grid (≥ md) -->
+              <div class="hidden md:grid md:grid-cols-3 gap-4 lg:gap-6">
+                <div
+                  class="screenshot-card w-full max-w-[180px] lg:max-w-[200px] mx-auto"
+                >
+                  <div
+                    class="aspect-[9/19] bg-neutral-100 rounded-3xl overflow-hidden shadow-2xl border border-neutral-200"
+                  >
+                    <img
+                      src="./images/5.jpg"
+                      alt="Tətbiq ekran görüntüsü 1"
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+
+                <div
+                  class="screenshot-card w-full max-w-[180px] lg:max-w-[200px] mx-auto"
+                >
+                  <div
+                    class="aspect-[9/19] bg-neutral-100 rounded-3xl overflow-hidden shadow-2xl border border-neutral-300 ring-1 ring-neutral-200"
+                  >
+                    <img
+                      src="./images/2.jpg"
+                      alt="Tətbiq ekran görüntüsü 2"
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+
+                <div
+                  class="screenshot-card w-full max-w-[180px] lg:max-w-[200px] mx-auto"
+                >
+                  <div
+                    class="aspect-[9/19] bg-neutral-100 rounded-3xl overflow-hidden shadow-2xl border border-neutral-200"
+                  >
+                    <img
+                      src="./images/3.jpg"
+                      alt="Tətbiq ekran görüntüsü 3"
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      // Initialize Swiper for mobile
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileSwiper = document.querySelector(".mobile-swiper");
+
+        if (mobileSwiper) {
+          new Swiper(mobileSwiper, {
+            slidesPerView: 1,
+            spaceBetween: 0,
+            centeredSlides: true,
+            loop: false,
+            grabCursor: true,
+            autoplay: {
+              delay: 2500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            },
+            speed: 600,
+            pagination: {
+              el: ".swiper-pagination",
+              clickable: true,
+            },
+            breakpoints: {
+              480: {
+                slidesPerView: 1,
+                spaceBetween: 0,
+              },
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 0,
+              },
+            },
+          });
+        }
+      });
+    </script>
   </body>
 </html>
